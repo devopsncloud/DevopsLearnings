@@ -33,3 +33,7 @@ echo -e "\e[36mSRIAKNTH"
 
 
 echo This shouldnt print any color
+
+#When we enable any color we need to disable the same
+
+echo -e"\e[30msrikanth\e[0m"
