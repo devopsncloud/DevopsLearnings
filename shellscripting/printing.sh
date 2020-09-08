@@ -30,3 +30,6 @@ echo -e "\e[33mSRIAKNTH"
 echo -e "\e[34mSRIAKNTH"
 echo -e "\e[35mSRIAKNTH"
 echo -e "\e[36mSRIAKNTH"
+
+
+echo This shouldnt print any color
