@@ -2,4 +2,4 @@
 
 ls 
 pwd 
-cd /
+cd / 
