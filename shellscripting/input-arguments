@@ -1,3 +1,5 @@
 #!/bin/bash
 
-echo $0
+echo $0   #prints the name of the script
+echo $1
+echo $2
