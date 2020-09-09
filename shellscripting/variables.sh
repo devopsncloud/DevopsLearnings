@@ -17,4 +17,4 @@ echo Hi todays date is ${Tdate}
 
 todaysdate=$(date +%F)
 
-echo ${todaysdate}
+echo cureent date is :${todaysdate}
