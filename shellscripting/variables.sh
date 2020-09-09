@@ -15,6 +15,6 @@ echo ${a}0000
 date=08-09-2020
 echo Hi todays date is ${date}
 
-todays date=${date +%F}
+todaysdate=${date +%F}
 
-echo ${todays date}
+echo ${todaysdate}
