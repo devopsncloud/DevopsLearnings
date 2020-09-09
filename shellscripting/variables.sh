@@ -18,3 +18,8 @@ echo Hi todays date is ${Tdate}
 todaysdate=$(date +%F)
 
 echo cureent date is :${todaysdate}
+
+
+sum=$((267+278))
+
+echo sum is :$sum
