@@ -7,3 +7,7 @@ d=true
 
 echo $b 
 echo ${c}
+
+
+echo ${b}reddy
+echo {$a}0000
