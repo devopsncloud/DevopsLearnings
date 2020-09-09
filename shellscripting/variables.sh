@@ -15,6 +15,6 @@ echo ${a}0000
 Tdate=08-09-2020
 echo Hi todays date is ${Tdate}
 
-todaysdate=${date+%F}
+todaysdate=$(date +%F)
 
 echo ${todaysdate}
