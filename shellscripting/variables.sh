@@ -12,8 +12,8 @@ echo ${c}
 echo ${b}reddy
 echo ${a}0000        
 
-date=08-09-2020
-echo Hi todays date is ${date}
+Tdate=08-09-2020
+echo Hi todays date is ${Tdate}
 
 todaysdate=${date +%F}
 
