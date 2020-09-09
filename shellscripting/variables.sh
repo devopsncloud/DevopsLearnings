@@ -10,6 +10,11 @@ echo ${c}
 
 
 echo ${b}reddy
-echo ${a}0000       
+echo ${a}0000        
 
+date=08-09-2020
 echo Hi todays date is ${date}
+
+todays date=${date +%F}
+
+echo ${todays date}
