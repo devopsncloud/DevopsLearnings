@@ -5,6 +5,8 @@ simplefunction()    #function declartion
 
 echo I am srikanth
 echo a = $a 
+b = 'srikanth'
+
 }
 
 #Calling a function
@@ -12,3 +14,5 @@ echo a = $a
  simplefunction
 
  a =10
+
+ echo $b
