@@ -4,7 +4,7 @@ simplefunction()    #function declartion
 {
 
 echo I am srikanth
-echoa = $a 
+echo a = $a 
 }
 
 #Calling a function
