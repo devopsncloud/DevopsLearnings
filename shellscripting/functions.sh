@@ -11,3 +11,5 @@ a = 10
 #Calling a function
  
  simplefunction
+
+ echo $a
