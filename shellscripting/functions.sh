@@ -14,11 +14,11 @@ c=200
 #Main program
  a=10
  b='srikanth kashapaka'
- echo $c
+ 
 
  simplefunction
 
- 
+ echo $c
  
 
   
