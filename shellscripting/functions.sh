@@ -13,6 +13,6 @@ b = 'srikanth'
  
  simplefunction
 
- a =10
+ a=10
 
  echo $b
