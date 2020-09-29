@@ -4,7 +4,7 @@ simplefunction()    #function declartion
 {
 
 echo I am srikanth
-a = 10
+echo $a
 
 }
 
@@ -12,4 +12,4 @@ a = 10
  
  simplefunction
 
- echo $a
+  a = 10
