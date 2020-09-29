@@ -19,7 +19,7 @@ echo $c
 
  simplefunction
 
- #echo $c
+ echo $c
  
 
   
