@@ -5,7 +5,7 @@ simplefunction()    #function declartion
 
 echo I am srikanth
 echo a = $a 
-b = 'srikanth'
+b='srikanth'
 
 }
 
@@ -15,4 +15,4 @@ b = 'srikanth'
 
  a=10
 
- echo $b
+ echo $a
