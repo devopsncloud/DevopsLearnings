@@ -7,6 +7,7 @@ echo I am srikanth
 echo $a
 echo $b
 c=200
+echo $c
 }
 
 #Calling a function
@@ -18,7 +19,7 @@ c=200
 
  simplefunction
 
- echo $c
+ #echo $c
  
 
   
