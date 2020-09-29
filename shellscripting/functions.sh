@@ -12,4 +12,4 @@ echo $a
  
  simplefunction
 
-  a = 10
+  a=10
