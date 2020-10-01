@@ -54,7 +54,17 @@ Payment() {
 
 User() {
     echo "Installing User"
+} 
+
+USAGE() {
+    echo "Usage: $0 Component"
+    echo Components: Frontend, MongoDB, Redis, MySQL, RabbitMQ , Cart, Catalogue, Shipping, Payment, User
+    echo For all Components : All
+    exit 1
 }
+
+
+
 
 case $1 in 
 
@@ -110,6 +120,11 @@ case $1 in
         Payment 
         User
         ;;
+
+
+    *)
+    USAGE
+    ;;   
 
 esac
 
