@@ -13,7 +13,7 @@
 #All
 
 #Creating a temporary log file to hide terminal output
-
+touch /tmp/roboshop.log
 LOG_FILE=/tmp/roboshop.log  #creates a temp logfile
 rm -f $LOG_FILE               # Clears the log content before the script runs
 
