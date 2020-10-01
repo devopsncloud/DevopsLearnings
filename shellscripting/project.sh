@@ -14,7 +14,7 @@
 
 Frontend() {
     echo "Installing Frontend Service"
-    yum install ngiinx 
+    yum install ngiinx -y
     case $? in
          0)
         echo "Nginx Install - SUCCESS"
