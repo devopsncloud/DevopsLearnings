@@ -19,7 +19,7 @@ rm -f $LOG_FILE               # Clears the log content before the script runs
 
 Frontend() {
     echo "Installing Frontend Service"
-    yum install abc -y &>$LOG_FILE     #output of the installation is redirecting to logfile
+    yum install nginx -y &>$LOG_FILE     #output of the installation is redirecting to logfile
     case $? in
          0)
         echo "Nginx Install - SUCCESS"
