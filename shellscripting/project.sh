@@ -58,7 +58,7 @@ User() {
 
 USAGE() {
     echo "Usage \t\t: $0 Component"
-    echo Components\t: Frontend, MongoDB, Redis, MySQL, RabbitMQ , Cart, Catalogue, Shipping, Payment, User
+    echo "Components\t: Frontend, MongoDB, Redis, MySQL, RabbitMQ , Cart, Catalogue, Shipping, Payment, User"
     echo For all Components : All
     exit 1
 }
