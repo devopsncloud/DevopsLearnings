@@ -20,7 +20,7 @@ Frontend() {
         echo "Nginx Install - SUCCESS"
         ;;
     *)
-       echo "Nginx Install - Failed"
+       echo "Nginx Install - FAILED"
        
        exit 1
        ;;
