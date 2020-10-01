@@ -107,7 +107,7 @@ case $1 in
         Cart
         Catalogue
         Shipping
-        payment 
+        Payment 
         User
         ;;
 
