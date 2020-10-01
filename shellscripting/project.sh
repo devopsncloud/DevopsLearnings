@@ -12,14 +12,13 @@
 #User
 #All
 
-#Creating a temporary log file to hide terminal output
-touch /tmp/roboshop.log
-LOG_FILE=/tmp/roboshop.log  #creates a temp logfile
-rm -f $LOG_FILE               # Clears the log content before the script runs
+#Creating a temporary log file to hide terminal output  
+LOG_FILE=/tmp/roboshop.log  
+rm -f $LOG_FILE               
 
 Frontend() {
     echo "Installing Frontend Service"
-    yum install nginx -y &>$LOG_FILE     #output of the installation is redirecting to logfile
+    yum install nginx -y &>$LOG_FILE     
     case $? in
          0)
         echo "Nginx Install - SUCCESS"
