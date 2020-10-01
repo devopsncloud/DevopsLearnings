@@ -14,7 +14,7 @@
 
 #Creating a temporary log file to hide terminal output
 
-LOG_FILE = /tmp/roboshop.log  #creates a temp logfile
+LOG_FILE=/tmp/roboshop.log  #creates a temp logfile
 rm -f $LOG_FILE               # Clears the log content before the script runs
 
 
