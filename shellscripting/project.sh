@@ -13,7 +13,18 @@
 #All
 
 Frontend() {
-    echo "Installing Frontend"
+    echo "Installing Frontend Service"
+    yum install nginx -y
+    case $? in
+         0)
+        echo "Nginx Install - SUCCESS"
+        ;;
+    *)
+       echo "Nginx Install - Failed"
+       
+       exit 1
+       ;;
+    esac
 }
 
 
@@ -55,6 +66,7 @@ Payment() {
 User() {
     echo "Installing User"
 } 
+
 
 USAGE() {
     echo -e "Usage \t\t   : $0 Component"
