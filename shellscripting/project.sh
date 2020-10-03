@@ -14,7 +14,7 @@
 
 Heading() {
 
-echo -e "\t\t e[1;4;35m$1\e[0m"
+echo -e "\t\t\e[1;4;35m$1\e[0m"
 
 }
 
