@@ -12,11 +12,14 @@
 #User
 #All
 
+Heading() {
 
+echo -e "\t\t e[1;4;35m$1\e[0m"
 
+}
 
 Frontend() {
-    echo "Installing Frontend Service"
+    Heading "Installing Frontend Service"
     yum install nginx -y &>$LOG_FILE     # terminal output redirecting to log file
     case $? in
          0)
