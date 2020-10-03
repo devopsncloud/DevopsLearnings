@@ -41,7 +41,7 @@ Frontend() {
     cd /usr/share/nginx/html
     rm -rf *
 
-    unzip /tmp/frontend.zip &>>$LOG_FILE
+    unzip -o /tmp/frontend.zip &>>$LOG_FILE
     Stat $? "Extract frontend files  "
 
     mv static/* .
@@ -75,7 +75,7 @@ curl -s -L -o /tmp/mongodb.zip curl -s -L -o /tmp/mongodb.zip "https://dev.azure
 
 Stat $? "Download Mongodb Schema"
 
-unzip /tmp/mongodb.zip &>>$LOG_FILE
+unzip -o /tmp/mongodb.zip &>>$LOG_FILE
 Stat $? "Extract Mongodb Schema"
 
 mongo < catalogue.js &>>$LOG_FILE
