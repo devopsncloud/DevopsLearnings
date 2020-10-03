@@ -42,7 +42,7 @@ Frontend() {
     rm -rf *
 
     unzip /tmp/frontend.zip &>>$LOG_FILE
-    Stat $? "Extract frontend files"
+    Stat $? "Extract frontend files  "
 
     mv static/* .
     rm -rf static README.md
