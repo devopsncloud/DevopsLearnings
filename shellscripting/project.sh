@@ -14,11 +14,18 @@
 
 #Creating a temporary log file to hide terminal output  
 LOG_FILE=/tmp/roboshop.log  
-rm -f $LOG_FILE               
+rm -f $LOG_FILE      
+
+#Setting a condition for the script to run only as a root 
+USER_ID=$(id -u)
+case $USER_ID in
+      0)true;;
+*)
+echo "Script should be run as a root "
 
 Frontend() {
     echo "Installing Frontend Service"
-    yum install nginx -y &>$LOG_FILE     
+    yum install nginx -y &>$LOG_FILE     # terminal output redirecting to log file
     case $? in
          0)
         echo "Nginx Install - SUCCESS"
