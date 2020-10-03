@@ -69,7 +69,7 @@ systemctl enable mongod &>>$LOG_FILE
 systemctl start mongod &>>$LOG_FILE
 Stat $? "Start Mongodb Service"
 
-cd/tmp
+cd /tmp
 curl -s -L -o /tmp/mongodb.zip "https://dev.azure.com/DevOps-Batches/
 98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/52feee4a-7c54-4f95-b1f5-2051a56b9d76/
 items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&
