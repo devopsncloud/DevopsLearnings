@@ -20,10 +20,10 @@ echo -e "\t\t\e[1;4;35m$1\e[0m"
 Stat(){
 case $1 in
          0)
-        echo "$2 - SUCCESS"
+        echo "$2 - \e[1;32mSUCCESS\e[0m"
         ;;
     *)
-       echo "$2 - FAILED"
+       echo "$2 -\e[1;31mFAILED\e[0m"
        
        exit 1
        ;;
