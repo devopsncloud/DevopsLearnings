@@ -13,20 +13,17 @@
 #All
 
 Heading() {
-
 echo -e "\t\t\e[1;4;35m$1\e[0m"
-
 }
 
-Frontend() {
-    Heading "Installing Frontend Service"
-    yum install nginx -y &>$LOG_FILE     # terminal output redirecting to log file
-    case $? in
+
+Stat(){
+case $1 in
          0)
-        echo "Nginx Install - SUCCESS"
+        echo "$2 - SUCCESS"
         ;;
     *)
-       echo "Nginx Install - FAILED"
+       echo "$2 - FAILED"
        
        exit 1
        ;;
@@ -34,43 +31,50 @@ Frontend() {
 }
 
 
+Frontend() {
+    Heading "Installing Frontend Service"
+    yum install nginx -y &>$LOG_FILE     # terminal output redirecting to log file
+    Stat $? "Nginx-Install"
+}
+
+
 MongoDB() {
-    echo "Installing MongoDB"
+    Heading "Installing MongoDB Service"
 }
 
 
 Redis() { 
-    echo "Installing Redis"
+    Heading "Installing Redis Service"
 }
 
 MySQL() {
-    echo "Installing MySQL"
+    Heading "Installing MySQL Service"
 }
 
 RabbitMQ() {
-    echo "Installing RabbitMQ"
+    Heading "Installing RabbitMQ Service"
 }
 
 Cart() {
-    echo "Installing Cart"
+    Heading "Installing Cart Service"
 }
 
 Catalogue() {
-    echo "Installing Catalogue"
+    Heading "Installing Catalogue Service"
 }
 
 
 Shipping() {
-    echo "Installing Shipping"
+    Heading "Installing Shipping Service"
 }
 
 Payment() {
-    echo "Installing Payment"
+    Heading "Installing Payment Service"
 }
 
 
 User() {
-    echo "Installing User"
+    Heading "Installing User Service"
 } 
 
 
