@@ -87,8 +87,9 @@ rm -f $LOG_FILE
 #Setting a condition for the script to run only as a root 
 USER_ID=$(id -u)
 case $USER_ID in
-      0) true;;
-      *)
+     0) true
+     ;;
+    *)
         echo "Script should be run as a root "
         USAGE()
         ;;
