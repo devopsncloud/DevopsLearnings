@@ -12,19 +12,7 @@
 #User
 #All
 
-#Creating a temporary log file to hide terminal output  
-LOG_FILE=/tmp/roboshop.log  
-rm -f $LOG_FILE      
 
-#Setting a condition for the script to run only as a root 
-USER_ID=$(id -u)
-case $USER_ID in
-      0)true;;
-*)
-   echo "Script should be run as a root "
-   USAGE()
-   ;;
-esac
 
 
 Frontend() {
@@ -90,7 +78,21 @@ USAGE() {
     exit 1
 }
 
+## Main program ##
 
+#Creating a temporary log file to hide terminal output  
+LOG_FILE=/tmp/roboshop.log  
+rm -f $LOG_FILE      
+
+#Setting a condition for the script to run only as a root 
+USER_ID=$(id -u)
+case $USER_ID in
+      0)true;;
+*)
+   echo "Script should be run as a root "
+   USAGE()
+   ;;
+esac
 
 
 case $1 in 
