@@ -89,15 +89,15 @@ Stat $? "Load User Schema\t"
 MySQL() {
     Heading "Installing MySQL Service"
     curl -L -o /tmp/mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar &>>$LOG_FILE
-    Stat $? "Download MySQL Bundle "
+    Stat $? "Download MySQL Bundle \t"
 
     cd /tmp
     tar -xf mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar 
-    Stat $? "Extract MySQL Bundle "
+    Stat $? "Extract MySQL Bundle \t"
 
     yum remove mariadb-libs -y &>>$LOG_FILE
     yum install mysql-community-client-5.7.28-1.el7.x86_64.rpm mysql-community-common-5.7.28-1.el7.x86_64.rpm mysql-community-libs-5.7.28-1.el7.x86_64.rpm mysql-community-server-5.7.28-1.el7.x86_64.rpm -y &>>$LOG_FILE 
-    Stat $? "Install MySQL Database"
+    Stat $? "Install MySQL Database\t"
 
     systemctl enable mysqld &>>$LOG_FILE
     systemctl start mysqld &>>$LOG_FILE
