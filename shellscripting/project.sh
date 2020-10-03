@@ -76,13 +76,13 @@ curl -s -L -o /tmp/mongodb.zip curl -s -L -o /tmp/mongodb.zip "https://dev.azure
 Stat $? "Download Mongodb Schema"
 
 unzip -o /tmp/mongodb.zip &>>$LOG_FILE
-Stat $? "Extract Mongodb Schema"
+Stat $? "Extract Mongodb Schema "
 
 mongo < catalogue.js &>>$LOG_FILE
-Stat $? "Load Catalogue Schema"
+Stat $? "Load Catalogue Schema  "
 
 mongo < users.js &>>$LOG_FILE
-Stat $? "Load User Schema"
+Stat $? "Load User Schema \t"
 }
 
 
