@@ -91,7 +91,7 @@ case $USER_ID in
 *)
    echo "Script should be run as a root "
    USAGE()
-   ;;
+   #;;
 esac
 
 
