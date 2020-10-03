@@ -22,6 +22,8 @@ case $USER_ID in
       0)true;;
 *)
 echo "Script should be run as a root "
+USAGE()
+;;
 
 Frontend() {
     echo "Installing Frontend Service"
