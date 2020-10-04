@@ -139,6 +139,18 @@ esac
 
 RabbitMQ() {
     Heading "Installing RabbitMQ Service"
+    yum install https://packages.erlang-solutions.com/erlang/rpm/centos/7/x86_64/esl-erlang_22.2.1-1~centos~7_amd64.rpm -y &>>$LOG_FILE
+    Stat $? "Install ErLang \t"   
+
+    curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>$LOG_FILE
+    Stat $? "Setup RabbitMQ Repos \t"   
+
+    yum install rabbitmq-server -y &>>$LOG_FILE
+    Stat $? "Install RabbitMQ Server \t"
+
+    systemctl enable rabbitmq-server &>>$LOG_FILE
+    systemctl start rabbitmq-server &>>$LOG_FILE
+    Stat $? "Start RabbitMQ Server \t"
 
     
 }
