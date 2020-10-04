@@ -150,14 +150,30 @@ RabbitMQ() {
 
     systemctl enable rabbitmq-server &>>$LOG_FILE
     systemctl start rabbitmq-server &>>$LOG_FILE
-    Stat $? "Start RabbitMQ Server \t"
-
-    
+    Stat $? "Start RabbitMQ Server \t"  
 }
 
 
 Redis() { 
     Heading "Installing Redis Service"
+
+    yum install epel-release yum-utils http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y &>>$LOG_FILE
+    Stat $? "Install Yum Utils"
+    
+    yum-config-manager --enable remi &>>$LOG_FILE
+    yum install redis -y &>>$LOG_FILE
+    Stat $? "Install Redis Server"
+
+    systemctl enable redis &>>$LOG_FILE
+    systemctl start redis  &>>$LOG_FILE
+    Stat $? "Start Redis Server"
+
+
+
+
+
+
+
 }
 
 
