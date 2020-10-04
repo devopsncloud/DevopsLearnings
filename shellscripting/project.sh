@@ -96,11 +96,8 @@ MySQL() {
     Stat $? "Extract MySQL Bundle \t"
 
     yum remove mariadb-libs -y &>>$LOG_FILE
-   # yum install mysql-community-client-5.7.28-1.el7.x86_64.rpm mysql-community-common-5.7.28-1.el7.x86_64.rpm mysql-community-libs-5.7.28-1.el7.x86_64.rpm mysql-community-server-5.7.28-1.el7.x86_64.rpm -y &>>$LOG_FILE 
-     yum install mysql-community-client-5.7.28-1.el7.x86_64.rpm \
-              mysql-community-common-5.7.28-1.el7.x86_64.rpm \
-              mysql-community-libs-5.7.28-1.el7.x86_64.rpm \
-              mysql-community-server-5.7.28-1.el7.x86_64.rpm -y &>>$LOG_FILE
+    yum install mysql-community-client-5.7.28-1.el7.x86_64.rpm mysql-community-common-5.7.28-1.el7.x86_64.rpm mysql-community-libs-5.7.28-1.el7.x86_64.rpm mysql-community-server-5.7.28-1.el7.x86_64.rpm -y &>>$LOG_FILE 
+#yum install mysql-community-client-5.7.28-1.el7.x86_64.rpm mysql-community-common-5.7.28-1.el7.x86_64.rpm mysql-community-libs-5.7.28-1.el7.x86_64.rpm mysql-community-server-5.7.28-1.el7.x86_64.rpm -y &>>$LOG_FILE
     
     Stat $? "Install MySQL Database\t"
 
