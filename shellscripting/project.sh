@@ -110,7 +110,19 @@ esac
 
     systemctl enable mysqld &>>$LOG_FILE
     systemctl start mysqld &>>$LOG_FILE
-    Stat $? "Start MySQL Database Server"
+    Stat $? "Start MySQL Server"
+
+    sleep 20
+
+    DEFAULT_PASSWORD=$(cat /var/log/mysqld.log | grep 'A temporary password'| awk '{print $NF}' )
+    echo -e "[client ]\nuser=root\npassword=$DEFAULT_PASSWORD"  >/root/.mysql-default
+
+    echo -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyRootPass@1';\nuninstall plugin 
+    lvalidate_password;\nALTER USER 'root'@'localhost' IDENTIFIED BY 'password';" >/tmp/remove-plugin.sql 
+
+    mysql --defaults-extra-file=/root/.mysql-default --connect-expired-password >/tmp/remove-plugin.sql &>>$LOG_FILE
+    Stat $? "Reset MySQL Password"
+    
 
 }
 
