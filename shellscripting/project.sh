@@ -87,7 +87,7 @@ Stat $? "Load User Schema\t"
 
 
 MySQL() { 
-    yum list installed -grep mysql-community-server  &>/dev/null
+    yum list installed | grep mysql-community-server  &>/dev/null
     case $? in 
        0) 
        true
