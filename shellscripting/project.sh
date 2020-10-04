@@ -118,7 +118,7 @@ esac
     echo -e "[client ]\nuser=root\npassword=$DEFAULT_PASSWORD"  >/root/.mysql-default
 
     echo -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyRootPass@1';\nuninstall plugin 
-    lvalidate_password;\nALTER USER 'root'@'localhost' IDENTIFIED BY 'password';" >/tmp/remove-plugin.sql 
+    validate_password;\nALTER USER 'root'@'localhost' IDENTIFIED BY 'password';" >/tmp/remove-plugin.sql 
 
     mysql --defaults-extra-file=/root/.mysql-default --connect-expired-password >/tmp/remove-plugin.sql &>>$LOG_FILE
     Stat $? "Reset MySQL Password"
