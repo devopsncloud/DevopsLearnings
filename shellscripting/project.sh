@@ -215,6 +215,7 @@ Description = $1 Service File
 After = network.target
 
 [Service]
+User=$APP_USER
 WorkingDirectory=/home/$APP_USER/$1
 ExecStart = $2
 
