@@ -193,7 +193,7 @@ NODEJS_SETUP(){
 
 
     SETUP_PERMISSIONS
-    SETUP_SERVICE cart "/bin/node $APP_NAME.js"
+    SETUP_SERVICE $APP_NAME "/bin/node $APP_NAME.js"
 
 }
 
