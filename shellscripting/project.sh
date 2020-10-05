@@ -139,8 +139,14 @@ esac
 
 RabbitMQ() {
     Heading "Installing RabbitMQ Service"
+
+    yum list installed | grep esl-erlang &>/dev/null
+
+    if [$? -ne 0]; then
     yum install https://packages.erlang-solutions.com/erlang/rpm/centos/7/x86_64/esl-erlang_22.2.1-1~centos~7_amd64.rpm -y &>>$LOG_FILE
     Stat $? "Install ErLang \t"   
+    fi
+
 
     curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>$LOG_FILE
     Stat $? "Setup RabbitMQ Repos \t"   
@@ -157,8 +163,9 @@ RabbitMQ() {
 Redis() { 
     Heading "Installing Redis Service"
 
+
     yum install epel-release yum-utils http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y &>>$LOG_FILE
-    Stat $? "Install Yum Utils"
+    Stat $? "Install Yum Utils\t"
     
     yum-config-manager --enable remi &>>$LOG_FILE
     yum install redis -y &>>$LOG_FILE
@@ -166,7 +173,7 @@ Redis() {
 
     systemctl enable redis &>>$LOG_FILE
     systemctl start redis  &>>$LOG_FILE
-    Stat $? "Start Redis Server"
+    Stat $? "Start Redis Server\t"
 
 
 
