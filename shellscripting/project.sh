@@ -182,11 +182,11 @@ NODEJS_SETUP(){
     APP_USER_SETUP
     Stat $? "Set up App User\t"
      curl -s -L -o /tmp/$APP_NAME.zip "$2" &>>LOG_FILE
-    Stat $? "Download Application Archieve \t"
+    Stat $? "Download Application Archive \t"
     mkdir -p /home/roboshop/$APP_NAME
     cd /home/roboshop/$APP_NAME
     unzip -o /tmp/$APP_NAME.zip &>>$LOG_FILE 
-        Stat $? "Extract Application Archieve\t"
+        Stat $? "Extract Application Archive\t"
 
     npm --unsafe-perm install &>>$LOG_FILE
         Stat $? "Install NodeJS Dependencies\t"
@@ -229,7 +229,7 @@ systemctl restart $1
 
 Cart() {
     Heading "Installing Cart Service"
-    NODEJS_SETUP cart  "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/5ad6ea2d-d96c-4947-be94-9e0c84fc60c1/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true"
+    NODEJS_SETUP cart "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/5ad6ea2d-d96c-4947-be94-9e0c84fc60c1/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true"
     
 }
 
