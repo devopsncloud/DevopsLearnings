@@ -176,7 +176,25 @@ Redis() {
 
 }
 NODEJS_SETUP(){
+    APP_NAME=$1
     yum install nodejs gcc-c++ -y &>>$LOG_FILE
+    Stat $? "Install NodeJS\t"
+    APP_USER_SETUP
+    Stat $? "Set up App User\t"
+     curl -s -L -o /tmp/$APP_NAME.zip "$2" &>>LOG_FILE
+    Stat $? "Download Application Archieve \t"
+    mkdir -p /home/roboshop/$APP_NAME
+    cd /home/roboshop/$APP_NAME
+    unzip -o /tmp/$APP_NAME.zip &>>$LOG_FILE 
+        Stat $? "Extract Application Archieve\t"
+
+    npm --unsafe-perm install &>>$LOG_FILE
+        Stat $? "Install NodeJS Dependencies\t"
+
+
+    SETUP_PERMISSIONS
+    SETUP_SERVICE cart "/bin/node $APP_NAME.js"
+
 }
 
 APP_USER_SETUP(){
@@ -211,29 +229,20 @@ systemctl restart $1
 
 Cart() {
     Heading "Installing Cart Service"
-    NODEJS_SETUP
-    Stat $? "Install NodeJS\t"
-    APP_USER_SETUP
-    Stat $? "Set up App User\t"
-    curl -s -L -o /tmp/cart.zip "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/5ad6ea2d-d96c-4947-be94-9e0c84fc60c1/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true" &>>LOG_FILE
-    Stat $? "Download Application Archieve \t"
-    mkdir -p /home/roboshop/cart
-    cd /home/roboshop/cart
-    unzip -o /tmp/cart.zip &>>$LOG_FILE 
-        Stat $? "Extract Applicationve Archie\t"
-
-    npm --unsafe-perm install &>>$LOG_FILE
-        Stat $? "Install NodeJS Dependencies\t"
-
-
-    SETUP_PERMISSIONS
-    SETUP_SERVICE cart "/bin/node cart.js"
-
+    NODEJS_SETUP cart  "https://dev.azure.com/
+    DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/
+    _apis/git/repositories/5ad6ea2d-d96c-4947-be94-9e0c84fc60c1/
+    items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5B
+    version%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true"
+    
 }
 
 Catalogue() {
     Heading "Installing Catalogue Service"
-    NODEJS_SETUP
+    NODEJS_SETUP catalogue "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/
+    _apis/git/repositories/73bf0c1f-1ba6-49fa-ae4e-e1d6df20786f/items?path=%2F&versionDescriptor%5B
+    versionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5B
+    version%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true"
 }
 
 
