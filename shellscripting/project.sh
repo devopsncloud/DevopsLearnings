@@ -181,7 +181,7 @@ NODEJS_SETUP(){
 
 APP_USER_SETUP(){
     id $APP_USER &>/dev/null
-    if [$? -ne 0]; then
+    if [ $? -ne 0 ]; then
     useradd $APP_USER
     fi
 }
