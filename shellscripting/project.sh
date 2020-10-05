@@ -202,6 +202,11 @@ ExecStart = $2
 
 [Install]
 WantedBy = multi-user.target" >/etc/systemd/system/$1.service
+
+systemctl enable $1 &>>$LOG_FILE
+systemctl restart $1
+
+
 }
 
 Cart() {
@@ -222,7 +227,7 @@ Cart() {
 
 
     SETUP_PERMISSIONS
-    SETUP_SERVICE cart "/bin/node server.js"
+    SETUP_SERVICE cart "/bin/node cart.js"
 
 }
 
