@@ -163,47 +163,89 @@ RabbitMQ() {
 Redis() { 
     Heading "Installing Redis Service"
 
-
     yum install epel-release yum-utils http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y &>>$LOG_FILE
     Stat $? "Install Yum Utils\t"
     
     yum-config-manager --enable remi &>>$LOG_FILE
     yum install redis -y &>>$LOG_FILE
-    Stat $? "Install Redis Server"
+    Stat $? "Install Redis Server\t"
 
     systemctl enable redis &>>$LOG_FILE
     systemctl start redis  &>>$LOG_FILE
     Stat $? "Start Redis Server\t"
 
+}
+NODEJS_SETUP(){
+    yum install nodejs gcc-c++ -y &>>$l
+}
 
-
-
-
-
-
+APP_USER_SETUP(){
+    id $APP_USER &>/dev/null
+    if[$? -ne ]; then
+    useradd $APP_USER
+    fi
 }
 
 
+SETUP_PERMISSIONS(){
+    chown $APP_USER:$APP_USER /home/$APP_USER -R
+}
+
+SETUP_SERVICE(){
+    echo "[Unit]
+Description = $1 Service File
+After = network.target
+
+[Service]
+WorkingDirectory=/home/$APP_USER/$1
+ExecStart = $2
+
+[Install]
+WantedBy = multi-user.target" >/etc/systemd/system/$1.Service
+}
+
 Cart() {
     Heading "Installing Cart Service"
+    NODEJS_SETUP
+    Stat $? "Install NodeJS"
+    APP_USER_SETUP
+    Stat $? "Set up App User"
+    curl -s -L -o /tmp/cart.zip "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/5ad6ea2d-d96c-4947-be94-9e0c84fc60c1/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true" &>>LOG_FILE
+    Stat $? "Download Application Archieve \t"
+    mkdir -p /home/roboshop/cart
+    cd /home/roboshop/cart
+    unzip -o /tmp/cart.zip &>>$LOG_FILE 
+        Stat $? "Extract Applicationve Archie"
+
+    npm install &>>$LOG_FILE
+        Stat $? "Install NodeJS Dependencies"
+
+
+    SETUP_PERMISSIONS
+    SETUP_SERVICE cart "/bin/node server.js"
+
 }
 
 Catalogue() {
     Heading "Installing Catalogue Service"
+    NODEJS_SETUP
 }
 
 
 Shipping() {
     Heading "Installing Shipping Service"
+    NODEJS_SETUP
 }
 
 Payment() {
     Heading "Installing Payment Service"
+    NODEJS_SETUP
 }
 
 
 User() {
     Heading "Installing User Service"
+    NODEJS_SETUP
 } 
 
 
@@ -220,6 +262,8 @@ USAGE() {
 LOG_FILE=/tmp/roboshop.log  
 rm -f $LOG_FILE      
 
+APP_USER=roboshop
+
 #Setting a condition for the script to run only as a root 
 USER_ID=$(id -u)
 case $USER_ID in
@@ -234,45 +278,45 @@ esac
 
 case $1 in 
 
-  Frontend)
-   Frontend
-   ;;
-
-  MongoDB)
-   MongoDB
-   ;;
-
-  MySQL)
-   MySQL
-   ;;
-
-  RabbitMQ)
-   RabbitMQ
-   ;;   
-
- Redis)
-   Redis
-   ;;
-
-   Cart)
-    Cart
+    Frontend)
+    Frontend
     ;;
 
-   Catalogue)
-    Catalogue
+    MongoDB)
+    MongoDB
     ;;
+
+    MySQL)
+    MySQL
+    ;;
+
+    RabbitMQ)
+    RabbitMQ
+    ;;   
+
+    Redis)
+    Redis
+    ;;
+
+    Cart)
+        Cart
+        ;;
+
+    Catalogue)
+        Catalogue
+        ;;
 
     Shipping)
-     Shipping
-     ;;
+        Shipping
+        ;;
 
     Payment)
-     Payment
-     ;;
+        Payment
+        ;;
 
     User)
-     User
-     ;;  
+        User
+        ;;  
 
     All)
         Frontend
