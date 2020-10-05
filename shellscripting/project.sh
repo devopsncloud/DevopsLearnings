@@ -176,7 +176,7 @@ Redis() {
 
 }
 NODEJS_SETUP(){
-    yum install nodejs gcc-c++ -y &>>$l
+    yum install nodejs gcc-c++ -y &>>$LOG_FILE
 }
 
 APP_USER_SETUP(){
@@ -217,7 +217,7 @@ Cart() {
     unzip -o /tmp/cart.zip &>>$LOG_FILE 
         Stat $? "Extract Applicationve Archie"
 
-    npm install &>>$LOG_FILE
+    npm --unsafe-perm install &>>$LOG_FILE
         Stat $? "Install NodeJS Dependencies"
 
 
