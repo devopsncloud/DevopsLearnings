@@ -207,18 +207,18 @@ WantedBy = multi-user.target" >/etc/systemd/system/$1.Service
 Cart() {
     Heading "Installing Cart Service"
     NODEJS_SETUP
-    Stat $? "Install NodeJS"
+    Stat $? "Install NodeJS\t"
     APP_USER_SETUP
-    Stat $? "Set up App User"
+    Stat $? "Set up App User\t"
     curl -s -L -o /tmp/cart.zip "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/5ad6ea2d-d96c-4947-be94-9e0c84fc60c1/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true" &>>LOG_FILE
     Stat $? "Download Application Archieve \t"
     mkdir -p /home/roboshop/cart
     cd /home/roboshop/cart
     unzip -o /tmp/cart.zip &>>$LOG_FILE 
-        Stat $? "Extract Applicationve Archie"
+        Stat $? "Extract Applicationve Archie\t"
 
     npm --unsafe-perm install &>>$LOG_FILE
-        Stat $? "Install NodeJS Dependencies"
+        Stat $? "Install NodeJS Dependencies\t"
 
 
     SETUP_PERMISSIONS
