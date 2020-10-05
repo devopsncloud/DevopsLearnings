@@ -242,10 +242,6 @@ case $1 in
    MongoDB
    ;;
 
-  Redis)
-   Redis
-   ;;
-
   MySQL)
    MySQL
    ;;
@@ -253,6 +249,10 @@ case $1 in
   RabbitMQ)
    RabbitMQ
    ;;   
+
+ Redis)
+   Redis
+   ;;
 
    Cart)
     Cart
@@ -277,9 +277,9 @@ case $1 in
     All)
         Frontend
         MongoDB
-        Redis
         MySQL
-        RabbitMQ  
+        RabbitMQ
+        Redis
         Cart
         Catalogue
         Shipping
