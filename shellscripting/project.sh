@@ -201,7 +201,7 @@ WorkingDirectory=/home/$APP_USER/$1
 ExecStart = $2
 
 [Install]
-WantedBy = multi-user.target" >/etc/systemd/system/$1.Service
+WantedBy = multi-user.target" >/etc/systemd/system/$1.service
 }
 
 Cart() {
