@@ -271,10 +271,28 @@ Shipping() {
     SETUP_SERVICE shipping "/bin/java -jar shipping.jar"
 }
 
-Payment() {
+    Payment() {
     Heading "Installing Payment Service"
-    NODEJS_SETUP
-}
+    yum install python36 gcc python3-devel -y &>>$LOG_FILE
+    Stat $? "Install Python3\t\t\t"
+    APP_USER_SETUP
+    mkdir -p /home/$APP_USER/payment 
+    cd /home/$APP_USER/payment
+
+    curl -L -s -o /tmp/payment.zip "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/1a920b55-9858-4b25-872b-1aeeb1ababa7/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true" &>>$LOG_FILE
+    Stat $? "Download Application Archive\t"
+
+    unzip -o /tmp/payment.zip &>>$LOG_FILE
+    Stat $? "Extract Application Archive\t"
+
+    pip3 install -r requirements.txt &>>$LOG_FILE
+    Stat $? "Install Python Dependencies\t"
+    ID_OF_USER=$(id -u $APP_USER)
+    sed -i -e "/uid/ c uid = $ID_OF_USER" -e "/gid/ c gid = $ID_OF_USER" /home/roboshop/payment/payment.ini
+
+    SETUP_PERMISSIONS
+    SETUP_SERVICE payment " /usr/local/bin/uwsgi --ini payment.ini"
+    }
 
 
 
