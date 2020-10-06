@@ -178,9 +178,9 @@ Redis() {
 NODEJS_SETUP(){
     APP_NAME=$1
     yum install nodejs gcc-c++ -y &>>$LOG_FILE
-    Stat $? "Install NodeJS\t"
+    Stat $? "Install NodeJS\t\t"
     APP_USER_SETUP
-    Stat $? "Set up App User\t"
+    Stat $? "Set up App User\t\t"
      curl -s -L -o /tmp/$APP_NAME.zip "$2" &>>LOG_FILE
     Stat $? "Download Application Archive \t"
     mkdir -p /home/roboshop/$APP_NAME
@@ -250,7 +250,21 @@ User() {
 
 Shipping() {
     Heading "Installing Shipping Service"
-    NODEJS_SETUP
+    yum install maven -y &>>$LOG_FILE
+    Stat $? "Install Maven\t\t\t"
+    APP_USER_SETUP
+    curl -s -L -o /tmp/shipping.zip "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/1d2e4e95-b279-4545-a344-f9064f2dc89f/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true" &>>$LOG_FILE
+   # Stat $? "Download Application Archive\t"
+
+    mkdir -p /home/$APP_USER/shipping 
+    cd /home/$APP_USER/shipping 
+    unzip -o /tmp/shipping.zip &>>$LOG_FILE
+    #Stat $? "Extract Application Archive\t"
+    mvn clean package &>>$LOG_FILE
+    #Stat $? "Install Maven Dependencies\t"
+    mv target/*dependencies.jar shipping.jar 
+    SETUP_PERMISSIONS
+    SETUP_SERVICE shipping "/bin/java -jar shipping.jar"
 }
 
 Payment() {
