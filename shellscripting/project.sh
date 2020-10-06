@@ -222,8 +222,12 @@ ExecStart = $2
 [Install]
 WantedBy = multi-user.target" >/etc/systemd/system/$1.service
 
+
+systemctl daemon-reload 
 systemctl enable $1 &>>$LOG_FILE
 systemctl restart $1
+Stat $? "Start $1 Service\t\t"
+
 
 
 }
@@ -254,14 +258,14 @@ Shipping() {
     Stat $? "Install Maven\t\t\t"
     APP_USER_SETUP
     curl -s -L -o /tmp/shipping.zip "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/1d2e4e95-b279-4545-a344-f9064f2dc89f/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true" &>>$LOG_FILE
-   # Stat $? "Download Application Archive\t"
+    Stat $? "Download Application Archive\t"
 
     mkdir -p /home/$APP_USER/shipping 
     cd /home/$APP_USER/shipping 
     unzip -o /tmp/shipping.zip &>>$LOG_FILE
-    #Stat $? "Extract Application Archive\t"
+    Stat $? "Extract Application Archive\t"
     mvn clean package &>>$LOG_FILE
-    #Stat $? "Install Maven Dependencies\t"
+    Stat $? "Install Maven Dependencies\t"
     mv target/*dependencies.jar shipping.jar 
     SETUP_PERMISSIONS
     SETUP_SERVICE shipping "/bin/java -jar shipping.jar"
