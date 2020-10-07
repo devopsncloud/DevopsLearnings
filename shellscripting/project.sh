@@ -87,13 +87,13 @@ Stat $? "Load User Schema\t"
 
 
 MySQL() { 
+    Heading "Installing MySQL Service"
     yum list installed | grep mysql-community-server &>/dev/null
     case $? in 
        0) 
          true
          ;;
        *) 
-    Heading "Installing MySQL Service"
     curl -L -o /tmp/mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar &>>$LOG_FILE
     Stat $? "Download MySQL Bundle \t"
 
@@ -127,7 +127,7 @@ esac
         Stat $? "Reset MySQL Password\t"
     fi
 
-    curl -s -L -o /tmp/mysql.zip "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/0a5a6ec5-35c7-4939-8ace-7c274f080347/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true" mysqld &>>$LOG_FILE
+    curl -s -L -o /tmp/mysql.zip "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/0a5a6ec5-35c7-4939-8ace-7c274f080347/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true" &>>$LOG_FILE
     Stat $? "Download MySQL Schema"
 
     cd /tmp
