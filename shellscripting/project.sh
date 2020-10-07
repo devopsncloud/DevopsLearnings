@@ -122,7 +122,7 @@ esac
 
 
     echo "Show Databases;" |mysql -uroot -ppassword &>/dev/null
-    if [$? -ne 0]; then
+    if [ $? -ne 0 ]; then
         mysql --defaults-extra-file=/root/.mysql-default --connect-expired-password </tmp/remove-plugin.sql &>>$LOG_FILE
         Stat $? "Reset MySQL Password\t"
     fi
