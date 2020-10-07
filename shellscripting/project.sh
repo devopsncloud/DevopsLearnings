@@ -135,7 +135,7 @@ esac
     Stat $? "Extract MySQL Schema"
 
     mysql -uroot -ppassword <shipping.sql
-    mysql -uroot -ppassword <ratings.sql
+   # mysql -uroot -ppassword <ratings.sql
     Stat $? "Load Schema to MySQL"   
 
 }
