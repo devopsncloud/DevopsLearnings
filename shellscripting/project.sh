@@ -128,14 +128,14 @@ esac
     fi
 
     curl -s -L -o /tmp/mysql.zip "https://dev.azure.com/DevOps-Batches/98e5c57f-66c8-4828-acd6-66158ed6ee33/_apis/git/repositories/0a5a6ec5-35c7-4939-8ace-7c274f080347/items?path=%2F&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true" &>>$LOG_FILE
-    Stat $? "Download MySQL Schema"
+    Stat $? "Download MySQL Schema\t"
 
     cd /tmp
     unzip -o /tmp/mysql.zip &>>$LOG_FILE
-    Stat $? "Extract MySQL Schema"
+    Stat $? "Extract MySQL Schema\t"
 
     mysql -uroot -ppassword <shipping.sql
-   # mysql -uroot -ppassword <ratings.sql
+   #mysql -uroot -ppassword <ratings.sql
     Stat $? "Load Schema to MySQL"   
 
 }
@@ -146,7 +146,7 @@ RabbitMQ() {
 
     yum list installed | grep esl-erlang &>/dev/null
 
-    if [$? -ne 0]; then
+    if [ $? -ne 0 ]; then
     yum install https://packages.erlang-solutions.com/erlang/rpm/centos/7/x86_64/esl-erlang_22.2.1-1~centos~7_amd64.rpm -y &>>$LOG_FILE
     Stat $? "Install ErLang \t"   
     fi
