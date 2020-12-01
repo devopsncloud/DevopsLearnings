@@ -22,8 +22,15 @@ pipeline {
                     steps{
                         sh 'npm install'
                     }
-                
                }
+                stage("Archieve files"){
+                    steps{
+                         sh 'tar -czf cart.tgz node_modules cart.js  package.json'
+                    }
+                }
+            
+            
+            
             }
         }
 
