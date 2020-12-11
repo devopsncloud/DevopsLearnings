@@ -2,6 +2,9 @@ pipeline {
 agent {
       label 'CI'
       }
+      tools {
+        maven 'mvn' 
+    }
       parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
@@ -25,6 +28,7 @@ agent {
                        }
                          steps {
                                sh 'env'
+                               sh 'mvn --version'
                     }
                 }
             }
