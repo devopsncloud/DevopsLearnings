@@ -7,15 +7,13 @@ agent {
             APP_VERSION = '1.0'
                 }
       
-          stages{
-                
-                environment {
+          stages{      
+            stage ('Stage-1') {
+               environment {
                   APP_VERSION = '2.0'
-                }
-                     
-            stage ('Testing') {
-               steps {
-                    sh 'env'
+                       }
+                         steps {
+                               sh 'env'
                     }
                 }
             }
