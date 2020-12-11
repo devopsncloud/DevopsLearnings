@@ -20,7 +20,7 @@ pipeline {
                      
                 stage("npm install") {
                     steps{
-                        sh 'npm install'
+                        sh 'yum install npm'
                     }
                }
                 stage("Archieve files for test"){
