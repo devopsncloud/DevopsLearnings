@@ -1,0 +1,18 @@
+pipeline {
+agent {
+      label 'CI'
+      }
+      
+        stages{
+            stage ('Testing') {
+
+                  tasks{
+                    sh 'env'
+                 }
+              }
+            }
+        }
+    
+    
+    
+    
