@@ -8,6 +8,11 @@ agent {
                 }
       
           stages{
+                
+                environment {
+                  APP_VERSION = '2.0'
+                }
+                     
             stage ('Testing') {
                steps {
                     sh 'env'
