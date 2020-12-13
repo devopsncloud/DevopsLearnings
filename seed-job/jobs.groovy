@@ -10,7 +10,7 @@ pipelineJob("Cart-CI") {
           branch("*/master")
         }
       }
-      scriptpath("jobs.groovy")
+      scriptpath("seed-job/jobs.groovy")
     }
   }
 }
