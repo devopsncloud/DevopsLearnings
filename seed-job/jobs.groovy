@@ -5,7 +5,7 @@ pipelineJob("Cart-CI") {
       scm{
         git{
           remote{
-            url("https://github.com/learn2earnSRK/DevopsLearnings.git/seed-job/jobs.groovy")
+            url("https://github.com/learn2earnSRK/DevopsLearnings.git")
                  }
           branch("*/master")
         }
