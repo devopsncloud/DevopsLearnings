@@ -10,7 +10,7 @@ pipelineJob("Cart-CI") {
           branch("*/master")
         }
       }
-      scriptpath("Jenkinsfile")
+      scriptpath("jobs.groovy")
     }
   }
 }
