@@ -1,6 +1,6 @@
 pipelineJob("Cart-CI") {
   description('CI-JOB Cart-Service')
-  definintion{
+  definition{
     cpsScm{
       scm{
         git{
