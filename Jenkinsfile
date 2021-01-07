@@ -25,7 +25,7 @@ pipeline {
                }
                 stage("Archieve files for test"){
                     steps{
-                         sh 'tar -czf cart.tgz node_modules cart.js  package.json'
+                         sh 'tar -czf cart.tgz cart.js  package.json'
                     }
                 }
               //  stage("upload artifacts"){
