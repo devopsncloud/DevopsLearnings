@@ -23,11 +23,11 @@ pipeline {
                         sh 'sudo yum install npm -y'
                     }
                }
-                //stage("Archieve files for test"){
-                   // steps{
-                         //sh 'tar -czf cart.tgz node_modules cart.js  package.json'
-                 //   }
-              //  }
+                stage("Archieve files for test"){
+                    steps{
+                         sh 'tar -czf cart.tgz node_modules cart.js  package.json'
+                    }
+                }
               //  stage("upload artifacts"){
                  //   steps{ 
                    //     sh 'curl -v -u admin:admin123 --uploadfile cart.tgz http://3.82.15.64:8081/repository/sample/cart.tgz'
