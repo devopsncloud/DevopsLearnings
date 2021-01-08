@@ -14,7 +14,25 @@ pipelineJob("Cart-CI") {
     }
   }
 }
-      
+
+
+pipelineJob("Catalogue-CI") {
+  description('CI-JOB catalogue-Service')
+  definition{
+    cpsScm{
+      scm{
+        git{
+          remote{
+            url("https://github.com/learn2earnSRK/DevopsLearnings.git")
+                 }
+          branch("*/master")
+        }
+      }
+      scriptpath("Jenkinsfile")
+    }
+  }
+}
+
                  
           
           
