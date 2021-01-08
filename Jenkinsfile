@@ -1,9 +1,9 @@
 pipeline {
-    agent {
-        node {
-            label "CI"
-        }
-    }
+    agent any
+       // node {
+         //   label "CI"
+       // }
+    
             stages { 
                 stage("Clone git repo"){
                     steps {
