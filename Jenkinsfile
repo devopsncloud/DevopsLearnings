@@ -28,11 +28,19 @@ pipeline {
                          sh 'tar -czf cart.tgz cart.js  package.json'
                     }
                 }
-                stage("upload artifacts"){
-                    steps{ 
-                      sh 'curl -v -u admin:1earn2e@rN --uploadfile cart.tgz http://3.239.58.248:8081/repository/cart/cart.tgz'
-                         }
-                       }
+               // stage("upload artifacts"){
+                   // steps{ 
+                    //  sh 'curl -v -u admin:1earn2e@rN --uploadfile cart.tgz http://3.239.58.248:8081/repository/cart/cart.tgz'
+                       //  }
+                     //  }
+        stage('Upload Artifacts') {
+            steps {
+                sh 'curl -v -u admin:1earn2e@rN --upload-file cart.tgz http://3.239.58.248:8081/repository/cart/cart.tgz'
+            }
+            
+        }
+           
+                        
         }
 }
             
