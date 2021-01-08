@@ -1,40 +1,50 @@
 pipelineJob("Cart-CI") {
-  description('CI-JOB Cart-Service')
-  definition{
-    cpsScm{
-      scm{
-        git{
-          remote{
-            url("https://github.com/learn2earnSRK/DevopsLearnings.git")
-                 }
+  description('CIJOB Cart Service')
+  definition {
+    cpsScm {
+      scm {
+        git {
+          remote {
+            url("https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps49/_git/rs-cart")
+          }
           branch("*/master")
         }
       }
-      scriptpath("Jenkinsfile")
+      scriptPath("Jenkinsfile")
     }
   }
 }
-
 
 pipelineJob("Catalogue-CI") {
-  description('CI-JOB catalogue-Service')
-  definition{
-    cpsScm{
-      scm{
-        git{
-          remote{
-            url("https://github.com/learn2earnSRK/DevopsLearnings.git")
-                 }
+  description('CIJOB Catalogue Service')
+  definition {
+    cpsScm {
+      scm {
+        git {
+          remote {
+            url("https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps49/_git/rs-catalogue")
+          }
           branch("*/master")
         }
       }
-      scriptpath("Jenkinsfile")
+      scriptPath("Jenkinsfile")
     }
   }
 }
 
-                 
-          
-          
-            
-    
+pipelineJob("Userr-CI") {
+  description('CIJOB User Service')
+  definition {
+    cpsScm {
+      scm {
+        git {
+          remote {
+            url("https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps49/_git/rs-user")
+          }
+          branch("*/master")
+        }
+      }
+      scriptPath("Jenkinsfile")
+    }
+  }
+}
