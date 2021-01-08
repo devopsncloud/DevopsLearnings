@@ -18,11 +18,11 @@ pipeline {
                   }
                }
                      
-                stage("npm install") {
-                    steps{
-                        sh 'sudo yum install npm -y'
-                    }
-               }
+               // stage("npm install") {
+                    //steps{
+                     //   sh 'sudo yum install npm -y'
+                  //  }
+             //  }
                 stage("Archieve files for test"){
                     steps{
                          sh 'tar -czf cart.tgz cart.js  package.json'
