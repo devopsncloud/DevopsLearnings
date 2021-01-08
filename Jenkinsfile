@@ -28,11 +28,11 @@ pipeline {
                          sh 'tar -czf cart.tgz cart.js  package.json'
                     }
                 }
-              //  stage("upload artifacts"){
-                 //   steps{ 
-                   //     sh 'curl -v -u admin:admin123 --uploadfile cart.tgz http://3.82.15.64:8081/repository/sample/cart.tgz'
-                     //       }
-          //  }
+                stage("upload artifacts"){
+                    steps{ 
+                      sh 'curl -v -u admin:1earn2e@rN --uploadfile cart.tgz http://3.239.58.248:8081/repository/cart/cart.tgz'
+                         }
+                       }
         }
 }
             
