@@ -37,22 +37,22 @@ pipeline {
                    // steps{ 
                     //  sh 'curl -v -u admin:1earn2e@rN --uploadfile cart.tgz http://3.239.58.248:8081/repository/cart/cart.tgz'
                        //  }
-                     //  }
+        //  }
+        
+        //------------------------------------------------
         stage('Upload Artifacts') {
             steps {
-                sh '''
-                VERSION= "${MAJOR_VERSION}.${ITERATION_NUMBER}.${BUILD_NUMBER}"
+               sh '''
+                VERSION="${MAJOR_VERSION}.${ITERATION_NUMBER}.${BUILD_NUMBER}"
                 
                 mv cart.tgz cart-${VERSION}.tgz
                 
-                curl -v -u ${NEXUS} --upload-file cart-${VERSION}.tgz http://3.236.235.27:8081/repository/cart/cart-${VERSION}.tgz
-                
-                
-                '''
-            }
+               curl -v -u ${NEXUS} --upload-file cart-${VERSION}.tgz http://3.236.235.27:8081/repository/cart/cart-${VERSION}.tgz 
+                '''     
+           }
             
-        }
-           
+       }
+        //--------------------------------------------------------   
                         
         }
 }
