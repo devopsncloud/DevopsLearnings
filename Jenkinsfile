@@ -38,7 +38,7 @@ pipeline {
                      //  }
         stage('Upload Artifacts') {
             steps {
-                sh 'curl -v -u ${NEXUS} --upload-file cart.tgz http://3.239.58.248:8081/repository/cart/cart.tgz'
+                sh 'curl -v -u ${NEXUS} --upload-file cart.tgz http://3.236.235.27:8081/repository/cart/cart.tgz'
             }
             
         }
