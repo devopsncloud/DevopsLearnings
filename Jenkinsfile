@@ -3,8 +3,11 @@ pipeline {
        // node {
          //   label "CI"
        // }
+    environment{
+        NEXUS = credentials('NexusUserID')
+                }
     
-            stages { 
+    stages { 
                 stage("Clone git repo"){
                     steps {
                         
@@ -35,7 +38,7 @@ pipeline {
                      //  }
         stage('Upload Artifacts') {
             steps {
-                sh 'curl -v -u admin:1earn2e@rN --upload-file cart.tgz http://3.239.58.248:8081/repository/cart/cart.tgz'
+                sh 'curl -v -u NEXUS --upload-file cart.tgz http://3.239.58.248:8081/repository/cart/cart.tgz'
             }
             
         }
