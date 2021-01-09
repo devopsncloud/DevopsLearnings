@@ -5,6 +5,8 @@ pipeline {
        // }
     environment{
         NEXUS = credentials('NexusUserID')
+        MAJOR_VERSION = 1
+        ITERATION_NUMBER =2
                 }
     
     stages { 
@@ -38,7 +40,15 @@ pipeline {
                      //  }
         stage('Upload Artifacts') {
             steps {
-                sh 'curl -v -u ${NEXUS} --upload-file cart.tgz http://3.236.235.27:8081/repository/cart/cart.tgz'
+                sh '''
+                VERSION= ${MAJOR_VERSION}.${ITERATION_NUMBER}.${BUILD_NUMBER}
+                
+                mv cart.tgz cart-${VERSION}.tgz
+                
+                curl -v -u ${NEXUS} --upload-file cart-${VERSION}.tgz http://3.236.235.27:8081/repository/cart/cart-${VERSION}.tgz
+                
+                
+                '''
             }
             
         }
