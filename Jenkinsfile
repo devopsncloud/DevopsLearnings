@@ -41,7 +41,7 @@ pipeline {
         stage('Upload Artifacts') {
             steps {
                 sh '''
-                VERSION= ${MAJOR_VERSION}.${ITERATION_NUMBER}.${BUILD_NUMBER}
+                VERSION= "${MAJOR_VERSION}.${ITERATION_NUMBER}.${BUILD_NUMBER}"
                 
                 mv cart.tgz cart-${VERSION}.tgz
                 
